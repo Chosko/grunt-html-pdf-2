@@ -13,7 +13,7 @@
   },
   "repository": {
   "type": "git",
-  "url": "git://github.com/max-barry/grunt-html-pdf.git"
+  "url": "https://github.com/mihara0320/grunt-html-pdf-2"
   },
   "devDependencies": {
   "grunt": "~0.4.5",
