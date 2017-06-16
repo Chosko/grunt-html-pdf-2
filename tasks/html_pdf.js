@@ -5,7 +5,6 @@ var pdf = require('html-pdf');
 module.exports = function(grunt) {
 
     grunt.registerMultiTask('html_pdf', 'Grunt wrapper for the Node package html-pdf', function() {
-        // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
             separator: "\n"
         });
@@ -14,20 +13,18 @@ module.exports = function(grunt) {
             async = grunt.util.async;
 
         var count = this.files.length;
+        grunt.log.ok("count value is:  " + count)
+
         async.forEach(this.files, function(f) {
-            /**
-            Filter the list of provided files to check they exist. Warn if they don't.
 
-            Push the source of each file to an array called 'src'.
-
-            If multiple input files have been supplied for a single destination, concatenate them.
-            */
+            var path;
             var src =   f.src
                         .filter(function(filepath) {
                             if (!grunt.file.exists(filepath)) {
                                 grunt.log.warn("Source file \"" + filepath + "\" not found.");
                                 return false;
                             } else {
+                                path = filepath
                                 return true;
                             }
                         })
@@ -36,24 +33,10 @@ module.exports = function(grunt) {
                         })
                         .join(grunt.util.normalizelf(options.separator));
 
-            /**
-            Action the html-pdf package api.
-
-            On callback write the file to the provided destination.
-            */
-            pdf.create(src, options, function(err, buffer){
-                if (err) {
-                    grunt.log.error("ERROR! Could not convert the source file to a PDF\n" + err);
-                    done();
-                    return;
-                }
-
-                grunt.file.write(f.dest, buffer);
-                grunt.log.ok("Successfully created " + f.dest);
-                if(--count === 0) {
-                    done();
-                }
-            });
+            grunt.log.ok("f is : " + JSON.stringify(f))
+            pdf.create(src).toFile(f.dest, function(err, res){
+                 grunt.log.ok("Successfully created " + f.dest);
+            })
 
         });
 
