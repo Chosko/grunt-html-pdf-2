@@ -33,13 +33,10 @@ module.exports = function(grunt) {
                         })
                         .join(grunt.util.normalizelf(options.separator));
 
-            grunt.log.ok("f is : " + JSON.stringify(f))
-            pdf.create(src).toFile(f.dest, function(err, res){
+            pdf.create(src, options).toFile(f.dest, function(err, res){
                  grunt.log.ok("Successfully created " + f.dest);
             })
-
         });
-
     });
 
 };
