@@ -1,8 +1,8 @@
 {
   "name": "grunt-html-pdf-2",
-  "version": "1.0.5",
-  "description": "Successor of grunt-html-pdf which is no longer in development",
-  "main": "index.js",
+  "version": "1.0.6",
+  "title": "Grunt HTML PDF 2",
+  "description": "Successor of grunt-html-pdf which seems to be no longer in development",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,9 +11,21 @@
   "engines": {
     "node": ">= 0.8.0"
   },
+  "keywords": [
+      "html",
+      "pdf",
+      "markdown",
+      "gruntplugin"
+  ],
   "repository": {
   "type": "git",
   "url": "https://github.com/mihara0320/grunt-html-pdf-2"
+  },
+  "bugs": {
+  "url": "https://github.com/mihara0320/grunt-html-pdf-2/issues"
+  },
+  "engines": {
+  "node": ">= 0.8.0"
   },
   "devDependencies": {
   "grunt": "~0.4.5",
