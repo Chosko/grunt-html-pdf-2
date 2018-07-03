@@ -34,7 +34,8 @@ module.exports = function(grunt) {
                         .join(grunt.util.normalizelf(options.separator));
 
             pdf.create(src, options).toFile(f.dest, function(err, res){
-                 grunt.log.ok("Successfully created " + f.dest);
+                grunt.log.ok("Successfully created " + f.dest);
+                done();
             })
         });
     });
